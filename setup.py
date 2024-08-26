@@ -12,11 +12,10 @@ if __name__ == "__main__":
 
     setup(
         name="collada2obj",
-        version='0.0.1',
-        # version='{{VERSION_PLACEHOLDER}}',
-        # author="Kwesi Rutledge",
-        # author_email="thesolitaryecrivain@gmail.com",
-        # url="https://github.com/kwesiRutledge/brom_drake-py",
+        version='{{VERSION_PLACEHOLDER}}',
+        author="Kwesi Rutledge",
+        author_email="thesolitaryecrivain@gmail.com",
+        url="https://github.com/kwesiRutledge/collada2obj",
         # description="A set of convenient logging and testing tools for the Drake robotics toolbox.",
         # long_description_content_type="text/markdown",
         # long_description=long_description,
