@@ -1,0 +1,11 @@
+collada2obj-venv/*
+
+# Ignore .obj files (they are outputs)
+**/*.obj
+
+# Ignore compiled python package
+**/*.pyc
+**/collada2obj.egg-info/*
+
+# Ignore IDE files
+.idea/*
