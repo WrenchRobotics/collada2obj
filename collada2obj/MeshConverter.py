@@ -113,13 +113,13 @@ class MeshConverter(object):
         self.extract_f() # Must occur after self.extract_vertices_and_normals()
 
 
-    def get_obj_str(self):
+    def get_obj_str_lines(self) -> List[str]:
         """
         Description
         -----------
-        Exports the obj file to the specified path.
-        :param obj3d_path:
-        :return:
+        Defines all of the lines in the obj file. (i.e., all of the many lines of strings that define the file)
+        :return: List[str]
+                 A list of strings where each element of the list is a line in the obj file.
         """
         # Setup
         obj_str = []
@@ -159,7 +159,7 @@ class MeshConverter(object):
         :return:
         """
         return open(obj3d_path, 'w').writelines(
-            self.get_obj_str()
+            self.get_obj_str_lines()
         )
 
     def extract_vertices_and_normals(
