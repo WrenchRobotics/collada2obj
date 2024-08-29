@@ -5,10 +5,12 @@ Description
 This file contains tests for the MeshConverter class.
 """
 
+from importlib import resources as impresources
 import unittest
 import xml.etree.ElementTree as ET
 
 # Local imports
+import collada2obj
 from collada2obj import MeshConverter
 
 class TestMeshConverter(unittest.TestCase):
@@ -20,7 +22,10 @@ class TestMeshConverter(unittest.TestCase):
         :return:
         """
         # Setup
-        dae_filename = "../examples/convert_base_mesh/base.dae"
+
+        dae_filename = str(
+            impresources.files(collada2obj) / "../examples/convert_base_mesh/base.dae"
+        )
         tree = ET.ElementTree(file=dae_filename)
 
         # FIX xmlns problem

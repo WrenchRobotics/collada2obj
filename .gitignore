@@ -9,3 +9,6 @@ collada2obj-venv/*
 
 # Ignore IDE files
 .idea/*
+
+# Test Coverage files
+.coverage
