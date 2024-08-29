@@ -1,4 +1,5 @@
 # collada2obj
+[![codecov](https://codecov.io/gh/WrenchRobotics/collada2obj/graph/badge.svg?token=1UXBQPRTHV)](https://codecov.io/gh/WrenchRobotics/collada2obj)
 
 This Python library can be used to easily convert collada (i.e., `.dae`) files
 to wavefront (i.e., `.obj` ) files. This transformation between file formats for 3d
@@ -21,8 +22,10 @@ pip install collada2obj
 
 ### Local Installation
 
-If you want to install this library locally, you can clone this repository and
-install it using `pip` in the following way: Change to the root directory of this repo
+If you want to install this library locally (recommended only if you want to tweak/play around with `collada2obj` itself), then you can clone this repository and
+install it using `pip` in the following way: 
+
+Change to the root directory of this repo
 and then run the following command:
  
 ```bash
@@ -43,4 +46,6 @@ def main(input_filename: str = "../convert_base_mesh/base.dae", output_filename:
     converter = ColladaFileConverter(dae_filename=input_filename, obj_filename=output_filename)
     converter.export_obj()
 
+if __name__ == '__main__':
+    main()
 ```
