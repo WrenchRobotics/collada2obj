@@ -49,3 +49,8 @@ def main(input_filename: str = "../convert_base_mesh/base.dae", output_filename:
 if __name__ == '__main__':
     main()
 ```
+
+## Acknowledgements
+
+This library was initially created by the user [@georgethrax](https://github.com/georgethrax) on GitHub.
+It was later expanded and refactored by the Wrench Robotics team. 

@@ -51,7 +51,8 @@ class ColladaFileConverter:
         """
         return [
             "# Converted from a Collada file to an OBJ file using collada2obj.\n",
-            "# Author: Kwesi Rutledge\n",
+            "# collada2obj was created by @georgethrax on GitHub (lixinthu).\n",
+            "# It is maintained by Kwesi Rutledge and Wrench Robotics.\n",
         ]
 
     def get_obj_str_lines(self) -> List[str]:
