@@ -30,8 +30,8 @@ class TestColladaFileConverter(unittest.TestCase):
         # Test
         found_company_name = False
         for line in converter.get_preamble_lines():
-            if "Wrench Robotics" in line:
-                found_company_name = True
+            found_company_name = found_company_name or ("Wrench Robotics" in line)
+
         self.assertTrue(found_company_name)
 
 if __name__ == '__main__':
