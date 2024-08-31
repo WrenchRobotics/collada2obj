@@ -72,11 +72,12 @@ class ColladaFileConverter:
         # Algorithm
         for ii, mesh_ii in enumerate(self.meshes):
             # Setup
-            print(f"Processing mesh {ii} ({geometries[ii].attrib["id"]})...")
+            geometry_ii_id = geometries[ii].attrib["id"]
+            print(f"Processing mesh {ii} ({geometry_ii_id})...")
             converter_ii = MeshConverter(mesh_ii)
 
             # Add a line describing the current object
-            obj_lines.append(f"o {geometries[ii].attrib["id"]}\n")
+            obj_lines.append(f"o {geometry_ii_id}\n")
 
             obj_lines += converter_ii.get_obj_str_lines()
 
