@@ -113,12 +113,15 @@ class TestMeshConverter(unittest.TestCase):
 
         # Create converter and make sure that it doesn't produce an error when the mesh doesn't have triangles
         converter = MeshConverter(meshes[0])
+        exception_was_raised = False
         try:
             converter.polylist_found = False # Fictitiously set the polylist_found attribute to False
             triangles = converter.find_triangles()
-            self.assertTrue(False)
         except Exception as e:
-            self.assertTrue(True)
+            print(e)
+            exception_was_raised = True
+
+        self.assertTrue(exception_was_raised)
 
 if __name__ == '__main__':
     unittest.main()
