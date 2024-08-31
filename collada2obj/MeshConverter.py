@@ -23,8 +23,12 @@ class MeshConverter(object):
         # Parse the mesh element
         self.sources = mesh_element.findall('source')
         self.vertices = mesh_element.find('vertices')
-        self.triangles = mesh_element.find('triangles')
-        self.triangles_p = self.triangles.find('p')
+
+        # Check to see if the vertices are defined through a:
+        # - "triangles" tag
+        # - "polylist" tag
+        self.triangles_found = not (mesh_element.find('triangles') is None)
+        self.polylist_found = not (mesh_element.find('polylist') is None)
 
         # Compute the obj elements
         self.compute_obj_elements()
@@ -73,7 +77,6 @@ class MeshConverter(object):
         :return:
         """
         # Setup
-        triangles = self.triangles
         vertices = self.vertices
 
         # Setup outputs of algorithm
@@ -81,6 +84,8 @@ class MeshConverter(object):
         data_sources_offsets = {'VERTEX': None, 'NORMAL': None}
 
         # Algorithm
+        triangles = self.find_triangles()
+
         for triangles_input in triangles.findall('input'):
             data_sources_offsets[triangles_input.attrib['semantic']] = int(triangles_input.attrib['offset'])
             if triangles_input.attrib['semantic'] == 'VERTEX':
@@ -205,7 +210,9 @@ class MeshConverter(object):
         :return:
         """
         # Setup
-        triangles_p = self.triangles_p
+        triangles = self.find_triangles()
+        triangles_p = triangles.find('p')
+
         offsets = self.data_sources_offsets
         v, vn = self.v, self.vn
 
@@ -229,6 +236,22 @@ class MeshConverter(object):
             p_ii[offsets['NORMAL'] + len(list(offsets)) * 2]
         ] for p_ii in p ])
 
+    def find_triangles(self)->ElementTree:
+        """
+        Description
+        -----------
+        Finds the triangles element in the mesh element.
+        :return:
+        """
+        # Setup
+
+        # Algorithm
+        if self.triangles_found:
+            return self.mesh_element.find('triangles')
+        elif self.polylist_found:
+            return self.mesh_element.find('polylist')
+        else:
+            raise ValueError("Could not find either 'triangles' or 'polylist'.")
 
     @staticmethod
     def reduce(ma, mb):
